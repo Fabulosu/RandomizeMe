@@ -1,0 +1,35 @@
+{
+  "name": "randomize-me",
+  "version": "1.0.0",
+  "description": "RandomizeMe is a JavaScript utility package that generates random personal information, including names, addresses, and other details. It's a development tool designed to assist in creating test data, prototyping, and various web development tasks. Easily integrate random data generation into your projects with RandomizeMe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "random",
+    "generator",
+    "data",
+    "randomize",
+    "utilities",
+    "javascript",
+    "development",
+    "npm",
+    "package",
+    "tool",
+    "web",
+    "programming",
+    "personal",
+    "information",
+    "name",
+    "address",
+    "details",
+    "identity"
+  ],
+  "author": "ishansingh1010",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ishansingh1010/RandomizeMe.git"
+  }
+}
