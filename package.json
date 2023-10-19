@@ -4,7 +4,7 @@
   "description": "RandomizeMe is a JavaScript utility package that generates random personal information, including names, addresses, and other details. It's a development tool designed to assist in creating test data, prototyping, and various web development tasks. Easily integrate random data generation into your projects with RandomizeMe.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "random",
@@ -31,5 +31,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ishansingh1010/RandomizeMe.git"
+  },
+  "dependencies": {
+    "random-names-generator": "^1.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
   }
 }
