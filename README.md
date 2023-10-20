@@ -47,6 +47,14 @@ Randomize-Me offers an array of fun functions:
 - `generateCity`: Tour India virtually with random city names.
 - `generateState`: Get lost in the vastness of India, randomly.
 - `generateAddress`: Create unique addresses with a twist of randomness.
+- `generateRandomNumberInRange`: Generate a random number within a specified range.
+- `generateRandomBoolean`: Get a true or false value at random.
+- `generateRandomItem`: Pick a random item from an array.
+- `generateId`: Create a random unique identifier (ID).
+- `generatePassword`: Generate a random password with customizable options.
+- `generateFileName`: Get a random file name with a customizable extension.
+- `generateString`: Craft a random string with your desired length.
+- `generateObject`: Create a random object with a variable number of key-value pairs.
 
 Feel free to unleash these functions in your projects and add a touch of unpredictability to your data.
 
