@@ -38,7 +38,8 @@ describe('Randomize Me', () => {
     });
 
     it('should generate a random city', () => {
-        const city = randomizeMe.generateCity();
+        const country = "india"
+        const city = randomizeMe.generateCity(country);
         expect(city).to.be.a('string');
     });
 
