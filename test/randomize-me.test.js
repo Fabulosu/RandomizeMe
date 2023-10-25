@@ -38,7 +38,8 @@ describe('Randomize Me', () => {
     });
 
     it('should generate a random city', () => {
-        const city = randomizeMe.generateCity();
+        const country = "india"
+        const city = randomizeMe.generateCity(country);
         expect(city).to.be.a('string');
     });
 
@@ -125,6 +126,45 @@ describe('Randomize Me', () => {
         expect(keys).to.have.length.above(0);
         expect(keys.every(key => typeof key === 'string')).to.be.true;
         expect(values.every(value => typeof value === 'number')).to.be.true;
+    });
+
+    it('should scramble the order of words in a text', () => {
+        const originalText = 'This is a test sentence for scrambling words';
+        const scrambledText = randomTextScrambler(originalText);
+
+        // Check if the scrambled text is not equal to the original text
+        expect(scrambledText).to.not.equal(originalText);
+    });
+
+    it('should generate a random coin flip result', () => {
+        const coinFlipResult = generateRandomCoinFlip();
+
+        // Check if the result is either 'head' or 'tails'
+        expect(coinFlipResult).to.satisfy(result => result === 'head' || result === 'tails');
+    });
+
+    it('should generate a random URL with the specified length', () => {
+        const urlLength = 10; // Modify this as needed
+        const randomUrl = generateRandomURL(urlLength);
+
+        // Check if the length of the URL matches the expected length
+        expect(randomUrl.length).to.equal(urlLength + 7); // 7 characters for 'http://'
+    });
+
+    it('should generate a random quote', async () => {
+        const quote = await generateRandomQuote();
+
+        // Check if the quote is a non-empty string
+        expect(quote).to.be.a('string');
+        expect(quote).to.not.be.empty;
+        // You can add more specific checks based on the expected response
+    });
+
+    it('should generate a random RGB color', () => {
+        const randomColor = generateRandomColorRGB();
+
+        // Check if the color matches the RGB format (e.g., 'rgb(123, 45, 67)')
+        expect(randomColor).to.match(/^rgb\(\d+, \d+, \d+\)$/);
     });
 
 });

@@ -1,5 +1,10 @@
-// Import the 'random-names-generator' module.
 const generatorNames = require('random-names-generator');
+const axios = require('axios');
+
+// Import data
+const countries = require('../src/data/countries.json');
+const religions = require('../src/data/religions.json');
+const cities = require('../src/data/cities.json');
 
 // Export an object with various functions for generating random data.
 module.exports = {
@@ -30,32 +35,9 @@ module.exports = {
 
     // Generate a random country name.
     generateCountry: () => {
-        // Define an array of country names.
-        const countryNames = [
-            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-            "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-            "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
-            "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica",
-            "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo (Congo-Kinshasa)", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor (Timor-Leste)",
-            "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland",
-            "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-            "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
-            "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
-            "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
-            "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-            "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia",
-            "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia (formerly Macedonia)", "Norway", "Oman",
-            "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-            "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
-            "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
-            "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
-            "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
-            "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
-            "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
-        ];
         // Generate a random index to pick a country name from the array.
-        const randomIndex = Math.floor(Math.random() * countryNames.length);
-        return countryNames[randomIndex];
+        const randomIndex = Math.floor(Math.random() * countries.length);
+        return countries[randomIndex];
     },
 
     // Generate a random age within a specified range.
@@ -67,53 +49,24 @@ module.exports = {
 
     // Generate a random religion.
     generateReligion: () => {
-        // Define an array of religion names.
-        const religionNames = [
-            "Christianity",
-            "Islam",
-            "Hinduism",
-            "Buddhism",
-            "Sikhism",
-            "Judaism",
-            "Jainism"
-        ];
         // Generate a random index to pick a religion name from the array.
-        const randomIndex = Math.floor(Math.random() * religionNames.length);
-        return religionNames[randomIndex];
+        const randomIndex = Math.floor(Math.random() * religions.length);
+        return religions[randomIndex];
     },
 
     // Generate a random city name.
-    generateCity: () => {
-        // Define an array of city names (e.g., Indian cities).
-        const indianCities = [
-            "Mumbai",
-            "Delhi",
-            "Bangalore",
-            "Kolkata",
-            "Chennai",
-            "Hyderabad",
-            "Pune",
-            "Ahmedabad",
-            "Jaipur",
-            "Lucknow",
-            "Kanpur",
-            "Nagpur",
-            "Patna",
-            "Vadodara",
-            "Indore",
-            "Bhopal",
-            "Surat",
-            "Coimbatore",
-            "Visakhapatnam",
-            "Agra",
-            "Varanasi",
-            "Amritsar",
-            "Kochi",
-            "Mysore",
-        ];
+    generateCity: (country) => {
+        // If 'country' is not passed to function then a country is generated
+        let selectedCountry = country || cities[`${module.exports.generateCountry()}`];
+
+        // Check if the country has any cities in cities.json and return "No data" if not
+        if (typeof selectedCountry === 'undefined') {
+            return "No data"
+        }
+
         // Generate a random index to pick a city name from the array.
-        const randomIndex = Math.floor(Math.random() * indianCities.length);
-        return indianCities[randomIndex];
+        const randomIndex = Math.floor(Math.random() * selectedCountry.length);
+        return selectedCountry[randomIndex];
     },
 
     // Generate a random state name.
@@ -275,4 +228,50 @@ module.exports = {
         }
         return randomObject;
     },
+
+    //Randomize the order of words in a text
+    randomTextScrambler: (text) => {
+        // Split the input text into an array of words
+        const words = text.split(' ');
+        const scrambledWords = [];
+        while (words.length > 0) {
+            // Generate a random index within the remaining words
+            const randomIndex = Math.floor(Math.random() * words.length);
+            // Remove the word from the original array and add it to the scrambled array
+            scrambledWords.push(words.splice(randomIndex, 1)[0]);
+        }
+        const scrambledText = scrambledWords.join(' ');
+        return scrambledText;
+    },
+
+    // Random flip the coin
+    generateRandomCoinFlip: () => {
+        const coinOptions = ['head', 'tails']
+        // random index for 'head' and 'tails'
+        const randomIndex = Math.floor(Math.random() * coinOptions.length);
+        return coinOptions[randomIndex]
+    },
+
+    // Generate random url with required url length
+    generateRandomURL: (urlLength) => {
+        const randomUrl = `http://${module.exports.generateString(urlLength)}/`
+        return randomUrl
+    },
+
+    // Generate a random quote 
+    generateRandomQuote: async () => {
+        const response = await axios.get('https://zenquotes.io/api/random');
+        const quote = response.data[0].q;
+        return quote
+    },
+
+    // Generate a random color rgb value
+    generateRandomColorRGB: () => {
+        // Generate random values for red, green, and blue components
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        const randomColor = `rgb(${red}, ${green}, ${blue})`
+        return randomColor
+    }
 };
