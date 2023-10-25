@@ -1,10 +1,6 @@
 {
   "name": "randomize-me",
-<<<<<<< HEAD
   "version": "2.5.0",
-=======
-  "version": "2.1.0",
->>>>>>> 201595ef31354a986e710e713f1237294a997d94
   "description": "RandomizeMe is a JavaScript utility package that generates random personal information, including names, addresses, and other details. It's a development tool designed to assist in creating test data, prototyping, and various web development tasks. Easily integrate random data generation into your projects with RandomizeMe.",
   "main": "index.js",
   "scripts": {
