@@ -33,7 +33,6 @@ console.log("Email:", email);
 
 // ... And the adventure continues!
 ```
-
 ## Functions Galore! 🚀
 
 Randomize-Me offers an array of fun functions:
@@ -41,6 +40,11 @@ Randomize-Me offers an array of fun functions:
 - `generateName`: Craft unique names on the fly.
 - `generatePhone`: Get random phone numbers for your contacts.
 - `generateEmail`: Whimsical email addresses, just because.
+- `randomTextScrambler`: Randomize the order of words in a text.
+- `generateRandomCoinFlip`: Flip a virtual coin for random outcomes.
+- `generateRandomURL`: Generate random URLs with a specified length.
+- `generateRandomQuote`: Retrieve random inspiring quotes.
+- `generateRandomColorRGB`: Create random RGB color values.
 - `generateCountry`: Explore the world with random country names.
 - `generateAge`: Age is just a number – randomize it!
 - `generateReligion`: Discover a world of random religions.
