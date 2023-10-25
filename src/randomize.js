@@ -6,11 +6,6 @@ const countries = require('../src/data/countries.json');
 const religions = require('../src/data/religions.json');
 const cities = require('../src/data/cities.json');
 
-// Import data
-const countries = require('../src/data/countries.json');
-const religions = require('../src/data/religions.json');
-const cities = require('../src/data/cities.json');
-
 // Export an object with various functions for generating random data.
 module.exports = {
     // Generate a random name.
