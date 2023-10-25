@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
   "Christianity",
   "Islam",
   "Hinduism",
@@ -7,3 +8,13 @@
   "Judaism",
   "Jainism"
 ]
+=======
+    "Christianity",
+    "Islam",
+    "Hinduism",
+    "Buddhism",
+    "Sikhism",
+    "Judaism",
+    "Jainism"
+]
+>>>>>>> 201595ef31354a986e710e713f1237294a997d94
